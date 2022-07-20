@@ -1,9 +1,15 @@
 from flask import  Flask, render_template,request
 from backEnd import backEnd
-
+from flask_cors import CORS
 import json
 
 app= Flask(__name__)
+CORS(app)  # This makes the CORS feature cover all routes in the app
+app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy   dog'
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+cors = CORS(app, resources={r"/foo": {"origins": "http://localhost:port"}})
+
 
 @app.route('/')
 
@@ -11,6 +17,7 @@ def main():
     return render_template('home.html')
 
 @app.route('/predict', methods=['POST'])
+@cross_origin(origin='localhost',headers=['Content- Type','Authorization'])
 def home():
     screenSize = float( request.form['screenSize'])
     screenRes = int(request.form['ScreenRes'])
@@ -27,9 +34,8 @@ def home():
 
     back = backEnd(screenSize, screenRes, Cpu, RAM, weight, touchScreen, HDD, SSD, SSHD, FStorage, Type, Os)
     final_predicted = (round(float(back.totalPredicted[0]),2))
-    response = Flask.jsonify({'some': format(final_predicted)})
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return response 
+    
+    return format(final_predicted)
 
 if __name__ == "__main__":
     app.run(debug=False)
