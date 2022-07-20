@@ -1,10 +1,12 @@
 from flask import  Flask, render_template,request
 from backEnd import backEnd
+from flask_cors import CORS
+
 
 
 import json
-
-app= Flask(__name__)
+app = Flask(__name__)
+CORS(app)
 
 
 
