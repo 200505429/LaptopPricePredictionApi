@@ -27,7 +27,7 @@ def home():
 
     back = backEnd(screenSize, screenRes, Cpu, RAM, weight, touchScreen, HDD, SSD, SSHD, FStorage, Type, Os)
     final_predicted = (round(float(back.totalPredicted[0]),2))
-    response = flask.jsonify({'some': format(final_predicted)})
+    response = Flask.jsonify({'some': format(final_predicted)})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response 
 
