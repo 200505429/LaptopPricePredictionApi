@@ -6,3 +6,4 @@ gunicorn
 joblib
 matplotlib
 xgboost
+flask_cors
