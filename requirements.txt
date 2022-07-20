@@ -5,5 +5,5 @@ numpy
 gunicorn
 joblib
 matplotlib
-xgboost
 flask_cors
+xgboost==1.5.0
