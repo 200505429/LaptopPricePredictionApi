@@ -28,9 +28,8 @@ def home():
 
     back = backEnd(screenSize, screenRes, Cpu, RAM, weight, touchScreen, HDD, SSD, SSHD, FStorage, Type, Os)
     final_predicted = (round(float(back.totalPredicted[0]),2))
-    response.headers.add("Access-Control-Allow-Origin", "*")  
-    response =  format(final_predicted)
-    return response
+    
+    return format(final_predicted)
 
 if __name__ == "__main__":
     app.run(debug=True)
