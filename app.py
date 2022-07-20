@@ -1,13 +1,12 @@
 from flask import  Flask, render_template,request
 from backEnd import backEnd
-from flask_cors import CORS, cross_origin
+
 import json
 
 app= Flask(__name__)
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+
 @app.route('/')
-@cross_origin()
+
 def main():
     return render_template('home.html')
 
@@ -32,4 +31,4 @@ def home():
     return format(final_predicted)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
